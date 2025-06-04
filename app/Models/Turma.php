@@ -9,4 +9,10 @@ class Turma extends Model
 {
     use HasFactory;
     protected $visible = ['id', 'classe','descricao', 'periodo', 'anolectivo', 'sala'];
+
+    
+    public function matriculas()
+{
+    return $this->hasMany(Matricula::class, 'turmas_id');
+}
 }

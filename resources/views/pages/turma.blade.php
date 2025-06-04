@@ -21,6 +21,7 @@
                     <th>Periodo</th>
                     <th>Sala</th>
                     <th>Limite aluno</th>
+                    <th>Vagas</th>
                     <th>Anolectivo</th>
                     <th></th>
                 </tr>
@@ -37,6 +38,9 @@
                         <td>{{ $turma->periodo }}</td>
                         <td>{{ $turma->sala }}</td>
                         <td>{{ $turma->limite }}</td>
+                        <td @if ($turma->vagas_restantes <= 0) class="text-danger fw-bold" @endif>
+                            {{ $turma->vagas_restantes }}
+                        </td>
                         <td>{{ $turma->anolectivo }}</td>
                         <td>
                             <a href="#Cadastro" data-bs-toggle="modal" onclick="editar({{ json_encode($turma) }})"
@@ -124,7 +128,8 @@
                             </div>
                             <div class="modal-footer ">
                                 <button type="submit" id="submit" class="btn btn-primary">Guardar</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
                             </div>
                         </form>
                     </div>

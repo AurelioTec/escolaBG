@@ -198,6 +198,14 @@
             opacity: 0.5;
             pointer-events: none;
         }
+
+        .text-danger {
+            color: #dc3545 !important;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
     </style>
     <script>
         $(document).ready(function() {

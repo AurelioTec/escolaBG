@@ -20,8 +20,19 @@ class TurmaController extends Controller
         $anoletivo = ConfigIni::orderBy('anoletivo', 'desc')
             ->pluck('anoletivo')
             ->first();
-        $turmas = Turma::where('anolectivo', $anoletivo)->get();
-    
+        //consul para mostra as turmas cadastradas e as vagas restantes em cada turma    
+        $turmas = Turma::where('anolectivo', $anoletivo)
+            ->withCount(['matriculas' => function ($query) use ($anoletivo) {
+                $query->where('estado', 'Aprovada') // Filtra apenas matrículas aprovadas
+                    ->whereHas('turma', function ($q) use ($anoletivo) {
+                        $q->where('anolectivo', $anoletivo);
+                    });
+            }])
+            ->get()
+            ->map(function ($turma) {
+                $turma->vagas_restantes = $turma->limite - $turma->matriculas_count;
+                return $turma;
+            });
 
         $config = ConfigIni::where('estado', 'aberto')
             ->selectRaw('estado, anoletivo, salas')
@@ -32,13 +43,12 @@ class TurmaController extends Controller
 
         confirmDelete($title, $text);
         $funcionario = Funcionarios::where('Users_id', $userId)->first();
-        if(!$turmas){
-            Alert::error('danger', 'Nenhuma turma configurada no ano lectivo '.$anoletivo);
+        if (!$turmas) {
+            Alert::error('danger', 'Nenhuma turma configurada no ano lectivo ' . $anoletivo);
             return redirect()->back();
-        }else{
+        } else {
             return view('pages.turma', compact('turmas', 'config', 'funcionario'));
         }
-        
     }
 
 
