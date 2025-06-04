@@ -54,7 +54,7 @@ class RelatorioController extends Controller
             ->when($request->filled('sala'), function ($query) use ($request) {
                 $query->where('turmas.sala', $request->sala);
             })
-            ->with(['turma' => function ($query) use ($request){
+            ->with(['turma' => function ($query) use ($request) {
                 $query->where('anolectivo', $request->anolectivo); // Garante que só traga turma de 2025
             }])
             ->first(); // Carrega o relacionamento já filtrado
@@ -62,6 +62,7 @@ class RelatorioController extends Controller
         $alunos = Matricula::select('matriculas.*')
             ->join('turmas', 'matriculas.turmas_id', '=', 'turmas.id')
             ->where('turmas.anolectivo', $request->anolectivo)
+            ->where('estado', 'Aprovada')
             ->when($request->filled('classe'), function ($query) use ($request) {
                 $query->where('turmas.classe', 'like', '%' . $request->classe . '%');
             })
