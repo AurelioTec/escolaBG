@@ -46,7 +46,7 @@ Bem-vindo ao repositório do **Sistema de Gestão de Matrículas** do **Complexo
 -   **Frontend**: Blade Templates, Bootstrap 5
 -   **Banco de Dados**: MySQL
 -   **Autenticação**: Laravel UI
--   **Exportação**: Html, Maatwebsite Excel
+-   **Exportação**: Html, PDF
 
 ---
 
@@ -100,11 +100,11 @@ Acesse o sistema em: `http://localhost:8000`
 
 ### Tela de Login
 
-(<img src="https://github.com/AurelioTec/sistema/blob/main/public/img/blade/login.jpeg?raw=true">)
+(<img src="https://github.com/AurelioTec/escolaBG/blob/main/public/img/blade/login.jpeg?raw=true">)
 
 ### Painel de Controle
 
-![Painel de Controle](https://drive.google.com/file/d/10_5ITjL-iZ15N5DpPJ2JpjrRdg8yAB3z/view?usp=drive_link)
+<img src="https://github.com/AurelioTec/escolaBG/blob/main/public/img/blade/Tela Home.jpeg?raw=true">)
 
 ---
 
