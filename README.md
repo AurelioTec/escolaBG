@@ -104,7 +104,7 @@ Acesse o sistema em: `http://localhost:8000`
 
 ### Painel de Controle
 
-<img src="https://github.com/AurelioTec/escolaBG/blob/main/public/img/blade/Tela Home.jpeg?raw=true">)
+<img src="https://github.com/AurelioTec/escolaBG/blob/main/public/img/blade/Tela%20Home.jpg?raw=true">)
 
 ---
 
