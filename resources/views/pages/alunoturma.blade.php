@@ -13,7 +13,7 @@
                 <h5>Ano Lectivo:{{ $header->turma->anolectivo }}</h5>
             </div>
             <div class="align-itens-right">
-                <a href="{{ route('relatorio.turmaluno', ['imprimir' => 'OK', 'turma' => $header->turma->descricao, 'classe' => $header->turma->classe, 'periodo' => $header->turma->periodo, 'anoletivo' => $header->turma->anolectivo]) }}"
+                <a href="{{ route('relatorio.turmaluno', ['imprimir' => 'OK', 'turma' => $header->turma->descricao, 'classe' => $header->turma->classe, 'periodo' => $header->turma->periodo, 'anolectivo' => $header->turma->anolectivo]) }}"
                     class="btn btn-primary text-light" target="_blank" title="imprimir lista de aluno por turma">
                     <i class="fa fa-print"></i>
                 </a>
@@ -56,21 +56,19 @@
                         <td>{{ $aluno->inscricao->genero }}</td>
                         <td>{{ 'Aluno ' . $aluno->tipomatricula }}</td>
                         <td>
-                            @if ($aluno->resultado === NULL)
+                            @if ($aluno->resultado === null)
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#alterResultado"
                                     data-id="{{ $aluno->id }}" class="btn btn-warning btn-alterar btn-sm">
                                     Sem resultado
                                 </button>
                             @elseif ($aluno->resultado === 'Não apto')
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#alterResultado"
-                                    data-id="{{ $aluno->id }}"
-                                    class="btn btn-danger btn-alterar  btn-sm">
+                                    data-id="{{ $aluno->id }}" class="btn btn-danger btn-alterar  btn-sm">
                                     {{ $aluno->resultado }}
                                 </button>
-                            @else 
+                            @else
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#alterResultado"
-                                    data-id="{{ $aluno->id }}"
-                                    class="btn btn-success btn-alterar  btn-sm">
+                                    data-id="{{ $aluno->id }}" class="btn btn-success btn-alterar  btn-sm">
                                     {{ $aluno->resultado }}
                                 </button>
                             @endif

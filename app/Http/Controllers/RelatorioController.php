@@ -10,9 +10,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Exceptions;
-use PhpParser\Node\Stmt\TryCatch;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use function PHPUnit\Framework\isEmpty;
@@ -42,32 +39,29 @@ class RelatorioController extends Controller
         $ultimoAno = ConfigIni::orderBy('anoletivo', 'desc') // Ordena por anoletivo decrescente
             ->selectRaw('anoletivo')                // Seleciona os campos necessários
             ->first();
-
-
         $header = Matricula::select('matriculas.*')
-        ->join('turmas', 'matriculas.turmas_id', '=', 'turmas.id')
-         ->where('turmas.anolectivo', $request->anoletivo) // Filtro fixo para 2025
-        ->when($request->filled('classe'), function($query) use ($request) {
-            $query->where('turmas.classe', 'like', '%' . $request->classe . '%');
-        })
-        ->when($request->filled('periodo'), function($query) use ($request) {
-            $query->where('turmas.periodo', 'like', '%' . $request->periodo . '%');
-        })
-        ->when($request->filled('descricao'), function($query) use ($request) {
-            $query->where('turmas.descricao', $request->descricao); // Corrigido para usar descricao
-        })
-        ->when($request->filled('sala'), function($query) use ($request) {
-            $query->where('turmas.sala', $request->sala);
-        })
-        ->with(['turma' => function($query) {
-            $query->where('anolectivo', '2025'); // Garante que só traga turma de 2025
-        }])
-        ->first();// Carrega o relacionamento já filtrado
-            
+            ->join('turmas', 'matriculas.turmas_id', '=', 'turmas.id')
+            ->where('turmas.anolectivo', $request->anolectivo) // Filtro fixo para 2025
+            ->when($request->filled('classe'), function ($query) use ($request) {
+                $query->where('turmas.classe', 'like', '%' . $request->classe . '%');
+            })
+            ->when($request->filled('periodo'), function ($query) use ($request) {
+                $query->where('turmas.periodo', 'like', '%' . $request->periodo . '%');
+            })
+            ->when($request->filled('descricao'), function ($query) use ($request) {
+                $query->where('turmas.descricao', $request->descricao); // Corrigido para usar descricao
+            })
+            ->when($request->filled('sala'), function ($query) use ($request) {
+                $query->where('turmas.sala', $request->sala);
+            })
+            ->with(['turma' => function ($query) use ($request){
+                $query->where('anolectivo', $request->anolectivo); // Garante que só traga turma de 2025
+            }])
+            ->first(); // Carrega o relacionamento já filtrado
 
         $alunos = Matricula::select('matriculas.*')
             ->join('turmas', 'matriculas.turmas_id', '=', 'turmas.id')
-            ->where('turmas.anolectivo', $request->anoletivo)
+            ->where('turmas.anolectivo', $request->anolectivo)
             ->when($request->filled('classe'), function ($query) use ($request) {
                 $query->where('turmas.classe', 'like', '%' . $request->classe . '%');
             })
