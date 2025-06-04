@@ -55,7 +55,7 @@ Bem-vindo ao repositório do **Sistema de Gestão de Matrículas** do **Complexo
 1. **Clone o repositório**:
 
 ```bash
-$ git clone https://github.com/AurelioTec/Sistema.git
+$ git clone https://github.com/AurelioTec/escolaBG.git
 ```
 
 2. **Instale as dependências**:
