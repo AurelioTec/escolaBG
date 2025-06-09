@@ -3,9 +3,6 @@
          <a class="nav-link" href="{{ route('config') }}"><i class="fa fa-cog"></i> Configurações</a>
      </li>
      <li class="nav-item">
-         <a class="nav-link" href="{{ route('turma') }}"><i class="fa fa-home-user"></i>Turmas</a>
-     </li>
-     <li class="nav-item">
          <a class="nav-link" href="{{ route('utilizador') }}"><i class="fa fa-user-friends"></i>
              Utilizadores</a>
      </li>
@@ -18,6 +15,9 @@
      <li class="nav-item">
          <a class="nav-link" href="{{ route('funcionario') }}"><i class="fa fa-users"></i>
              Funcionarios</a>
+     </li>
+     <li class="nav-item">
+         <a class="nav-link" href="{{ route('turma') }}"><i class="fa fa-home-user"></i>Turmas</a>
      </li>
      <li class="nav-item">
          <a class="nav-link" href="{{ route('relatorio') }}"><i class="fa fa-file-edit"></i> Relatórios</a>
@@ -42,8 +42,8 @@
              Funcionarios</a>
      </li>
      <li class="nav-item">
-        <a class="nav-link" href="{{ route('turma') }}"><i class="fa fa-home-user"></i>Turmas</a>
-    </li>
+         <a class="nav-link" href="{{ route('turma') }}"><i class="fa fa-home-user"></i>Turmas</a>
+     </li>
      <li class="nav-item">
          <a class="nav-link" href="{{ route('relatorio') }}"><i class="fa fa-file-edit"></i> Relatórios</a>
      </li>
@@ -55,6 +55,9 @@
      </li>
      <li class="nav-item">
          <a class="nav-link" href="{{ route('matricula') }}"><i class="fa fa-graduation-cap"></i> Matrículas</a>
+     </li>
+     <li class="nav-item">
+         <a class="nav-link" href="{{ route('turma') }}"><i class="fa fa-home-user"></i>Turmas</a>
      </li>
      <li class="nav-item">
          <a class="nav-link" href="{{ route('relatorio') }}"><i class="fa fa-file-edit"></i> Relatórios</a>
