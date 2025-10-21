@@ -77,4 +77,4 @@ Auth::routes();
 
 Route::get('/home', action: function () {
     return redirect(to: '/');
-})->name('home');
+});
