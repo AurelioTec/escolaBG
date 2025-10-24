@@ -9,6 +9,7 @@ use App\Http\Controllers\PerfilAlunoController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MInipautaController;
 use App\Models\Funcionarios;
 use App\Models\Matricula;
 use App\Models\Turma;
@@ -70,6 +71,9 @@ Route::group(['middleware' => "auth"], function () {
     Route::get('relatorio/usuario', [RelatorioController::class, 'getUser'])->name('relatorio.usuario');
     Route::get('relatorio/matricula', [RelatorioController::class, 'getMatricula'])->name('relatorio.matricula');
     Route::get('relatorio/a/', [RelatorioController::class, 'getWarningAlert'])->name('relatrio.alerta');
+
+    //Rotas de Notas
+    Route::get('minipauta/disciplina/{idTurma}',[MInipautaController::Class, 'index'])->name('minipauta.disciplina');
 });
 
 

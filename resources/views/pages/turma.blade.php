@@ -17,7 +17,7 @@
                 <tr>
                     <th>#</th>
                     <th>Classe </th>
-                    <th>Descrição</th>
+                    <th>Turma</th>
                     <th>Periodo</th>
                     <th>Sala</th>
                     <th>Limite aluno</th>
@@ -44,8 +44,11 @@
                         <td>{{ $turma->anolectivo }}</td>
                         <td>
                             <a href="#Cadastro" data-bs-toggle="modal" onclick="editar({{ json_encode($turma) }})"
-                                class="btn text-success">
+                                class="btn text-success" title="Editar turma">
                                 <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="{{ route('minipauta.disciplina',  Crypt::encrypt($turma->id)) }}" class="btn text-primary" title="Lançar nota">
+                                <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
                             </a>
                             <a href="{{ route('turma.excluir', Crypt::encrypt($turma->id)) }}" class="btn text-danger"
                                 data-confirm-delete="true">

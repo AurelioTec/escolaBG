@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Matricula extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = ['resultado'];
 
     // Relação com o aluno (chave estrangeira 'inscricaos_id' na tabela 'matriculas')
@@ -32,5 +32,9 @@ class Matricula extends Model
     public function usuario()
     {
         return $this->belongsTo(User::class, 'users_id');
+    }
+
+    public function minipauta(){
+        return $this->hasOne(Minipauta::class);
     }
 }

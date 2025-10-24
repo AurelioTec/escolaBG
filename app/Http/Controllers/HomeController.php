@@ -33,8 +33,13 @@ class HomeController extends Controller
         $user = Auth::user(); // Obtém o usuário autenticado
         $userId = Auth::id();
         $anoletivo = ConfigIni::orderBy('anoletivo', 'desc')
-            ->pluck('anoletivo')
+            ->pluck('anoletivo', 'escola')
             ->first();
+
+        $escola = ConfigIni::orderBy('anoletivo', 'desc')
+            ->pluck('escola')
+            ->first();
+
         // Total de matrículas
         $total = Matricula::whereHas('turma', function ($query) use ($anoletivo) {
             $query->where('anolectivo', $anoletivo);
@@ -105,6 +110,7 @@ class HomeController extends Controller
             'countG',
             'funcionario',
             'total',
+            'escola',
             'inscriPendente',
             'MatriNova',
             'porcentagem',

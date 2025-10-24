@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('DataTables/minipauta.css') }}">
     <link rel="shortcut icon" href="{{ asset('img/blade/favicon.ico') }}" type="image/x-icon">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/scriptTop.js') }}"></script>
@@ -572,8 +573,12 @@
         <button class="sidebar-toggle" id="sidebarToggle">
             <i class="fas fa-bars"></i>
         </button>
-
         <div class="navbar-actions">
+            <div class="ml-lg-5 d-flex justify-content-center align-items-center ">
+                <div class="text-center text-white-50">
+                   {{$escola}}
+                </div>
+            </div>
             @if (Auth::check() && $funcionario && $funcionario->foto)
                 <a class="nav-link" href="{{ route('utilizador.perfil') }}">
                     <img src="{{ asset('img/upload/funcio/' . $funcionario->foto) }}" height="30" width="30"
