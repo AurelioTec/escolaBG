@@ -1,0 +1,71 @@
+.table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table input {
+    width: 60px;
+    text-align: center;
+}
+
+.table .nota-calculada {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+.table .mfd {
+    background-color: #d1e7dd;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.acoes-cell {
+    white-space: nowrap;
+}
+
+#tabelaNotas {
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        border: 0;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tr {
+        margin-bottom: 20px;
+        display: block;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .table td {
+        display: block;
+        text-align: right;
+        border-bottom: 1px solid #eee;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+
+    .table td:last-child {
+        border-bottom: 0;
+    }
+}
