@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class MInipautaController extends Controller
 {
 
-public function index($idTurma){
+    /**
+     * @param $idTurma
+     * @return
+     */
+    public function index($idTurma){
 
    $idturma= decrypt($idTurma);
     $userId = Auth::id();
