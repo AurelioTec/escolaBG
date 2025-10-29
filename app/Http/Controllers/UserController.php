@@ -18,17 +18,21 @@ class UserController extends Controller
         //trazer todos os dados do banco de dados
         if ($usuario->tipo === 'Admin') {
             // Exibir todos os usuários
-            $user = User::all();
+            $usuarios = User::all();
+            $title = 'Atenção!';
+            $text = "Tem certeza que dejesas excluir o Utilizador!?";
+            confirmDelete($title, $text);
+            return view('pages.configure.usuario', compact('usuarios'));
         } elseif ($usuario->tipo === 'Diretor') {
             // Exibir apenas alguns usuários (defina a lógica de seleção)
-            $user = User::all()->slice(1); // Skip o primeiro usuário
+            $usuarios = User::all()->slice(1); // Skip o primeiro usuário
+            $title = 'Atenção!';
+            $text = "Tem certeza que dejesas excluir o Utilizador!?";
+            confirmDelete($title, $text);
+            return view('pages.configure.usuario', compact('usuarios'));
+        }else{
+            return redirect()->route('sair');
         }
-        $userId = Auth::id();
-        $funcionario = Funcionarios::where('Users_id', $userId)->first(); // Acessa o funcionário relacionado
-        $title = 'Atenção!';
-        $text = "Tem certeza que dejesas excluir o Utilizador!?";
-        confirmDelete($title, $text);
-        return view('pages.usuario', compact('user', 'funcionario'));
     }
     //função para inserir e atualizar dados do banco.
     public function store(Request $request)

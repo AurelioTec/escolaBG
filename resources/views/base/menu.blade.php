@@ -1,10 +1,6 @@
  @can('Administrador')
      <li class="nav-item">
-         <a class="nav-link" href="{{ route('config') }}"><i class="fa fa-cog"></i> Configurações</a>
-     </li>
-     <li class="nav-item">
-         <a class="nav-link" href="{{ route('utilizador') }}"><i class="fa fa-user-friends"></i>
-             Utilizadores</a>
+         <a class="nav-link" href="{{ route('configure.home') }}"><i class="fa fa-cog"></i> Configurações</a>
      </li>
      <li class="nav-item">
          <a class="nav-link" href="{{ route('inscricao') }}"><i class="fa fa-user-graduate"></i> Alunos</a>
@@ -20,12 +16,15 @@
          <a class="nav-link" href="{{ route('turma') }}"><i class="fa fa-home-user"></i>Turmas</a>
      </li>
      <li class="nav-item">
+         <a class="nav-link" href="{{ route('disciplinas') }}"><i class="fa fa-home-user"></i>Disciplinas</a>
+     </li>
+     <li class="nav-item">
          <a class="nav-link" href="{{ route('relatorio') }}"><i class="fa fa-file-edit"></i> Relatórios</a>
      </li>
  @endcan
  @can('Director')
      <li class="nav-item">
-         <a class="nav-link" href="{{ route('config') }}"><i class="fa fa-cog"></i> Configurações</a>
+         <a class="nav-link" href="{{ route('configure.home') }}"><i class="fa fa-cog"></i> Configurações</a>
      </li>
      <li class="nav-item">
          <a class="nav-link" href="{{ route('utilizador') }}"><i class="fa fa-user-friends"></i>

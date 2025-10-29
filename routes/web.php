@@ -10,6 +10,7 @@ use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MInipautaController;
+use App\Models\ConfigIni;
 use App\Models\Funcionarios;
 use App\Models\Matricula;
 use App\Models\Turma;
@@ -25,15 +26,18 @@ Route::get('sair', function () {
 Route::group(['middleware' => "auth"], function () {
 
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/', function () {
+        return redirect()->route('home');
+    });
     //rotas Configini
 
-    Route::get('configini', [ConfigIniController::class, 'index'])->name('config');
-    Route::post('configini', [ConfigIniController::class, 'store'])->name('config.guardar');
-    Route::delete('configini/encerrar/{id}', [ConfigIniController::class, 'encerrar'])->name('config.encerrar');
+    Route::get('configure/home', [ConfigIniController::class, 'index'])->name('configure.home');
+   Route::get('configure/configini',[ConfigIniController::class, 'configureIni'])->name('configure.ini');
+    Route::post('configure/configini/post', [ConfigIniController::class, 'store'])->name('config.guardar');
+    Route::delete('configure//encerrar/{id}', [ConfigIniController::class, 'encerrar'])->name('config.encerrar');
     //Rotas Usuarios
-    Route::get('utilizador', [UserController::class, 'index'])->name('utilizador');
+    Route::get('utilizador/lista', [UserController::class, 'index'])->name('utilizador.lista');
     Route::post('utilizador/cadastrar', [UserController::class, 'store'])->name('utilizador.cadastrar');
     Route::post('utilizador/updatepass', [UserController::class, 'updatePassword'])->name('utilizador.update');
     Route::post('Utilizador/updatefoto', [FuncionariosController::class, 'updateProfilePicture'])->name('utilizador.updatefoto');
@@ -71,7 +75,6 @@ Route::group(['middleware' => "auth"], function () {
     Route::get('relatorio/usuario', [RelatorioController::class, 'getUser'])->name('relatorio.usuario');
     Route::get('relatorio/matricula', [RelatorioController::class, 'getMatricula'])->name('relatorio.matricula');
     Route::get('relatorio/a/', [RelatorioController::class, 'getWarningAlert'])->name('relatrio.alerta');
-
     //Rotas de Notas
     Route::get('minipauta/disciplina/{idTurma}',[MInipautaController::Class, 'index'])->name('minipauta.disciplina');
 });

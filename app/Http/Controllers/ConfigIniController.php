@@ -14,17 +14,34 @@ class ConfigIniController extends Controller
 {
     public function index()
     {
+
+
         //trazer todos os dados do banco de dados
-        $config = ConfigIni::all();
-        $userId = Auth::id();
-        $funcionario = Funcionarios::where('Users_id', $userId)->first(); // Acessa o funcionário relacionado
+        /*  $config = ConfigIni::all();
+          $userId = Auth::id();
+          $funcionario = Funcionarios::where('Users_id', $userId)->first(); // Acessa o funcionário relacionado*/
 
         $title = 'Atenção!';
         $text = "Tens a certesa que desejas encerrar o ano letivo!?";
 
         confirmDelete($title, $text);
-        return view('pages.configini', compact('config', 'funcionario'));
+
+        //  return view('pages.configini', compact('config', 'funcionario'));
+        return view('pages.configure.homeconfigure');
     }
+
+    public function configureIni()
+    {
+        //trazer todos os dados do banco de dados
+        $config = ConfigIni::all();
+        $title = 'Atenção!';
+        $text = "Tens a certesa que desejas encerrar o ano letivo!?";
+        confirmDelete($title, $text);
+
+         return view('pages.configure.configini', compact('config'));
+    }
+
+
     public function store(Request $request)
     {
         $config = null;

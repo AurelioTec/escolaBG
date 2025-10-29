@@ -26,12 +26,12 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($user as $use)
+                @foreach ($usuarios as $use)
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{ $use->name }}</td>
-                        <td>{{ $use->email }}</td>
-                        <td>{{ $use->tipo }}</td>
+                        <td>{{ $use->name ?? '-'}}</td>
+                        <td>{{ $use->email ?? '-' }}</td>
+                        <td>{{ $use->tipo ?? '-' }}</td>
                         <td>
                             <a href="#Cadastro" data-bs-toggle="modal" onclick="editar({{ json_encode($use) }})"
                                 class="btn text-success">
